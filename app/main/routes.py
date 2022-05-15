@@ -1,24 +1,23 @@
 import os
 import secrets
 from flask import render_template, request, url_for, flash, redirect
-from PIL import Image
 import app
-from ..forms import PitchForm, RegistrationForm, LoginForm, UpdateAccountForm
+from ..forms import BlogForm, RegistrationForm, LoginForm, UpdateAccountForm
 from app import db
 from app.main import main
-from app.models import User, Pitch
+from app.models import User, Blog
 from flask_login import current_user, login_required, login_user, logout_user
 
-pitch = [
+blog = [
     {
         'author': 'Test User',
-        'title': 'Test Pitch',
+        'title': 'Test blog',
         'body': 'Test Tester Testing',
         'date_posted': 'May 6, 2020'
     },
     {
         'author': 'John User',
-        'title': 'Johns Pitch',
+        'title': 'Johns blog',
         'body': 'John Tester Testing',
         'date_posted': 'May 2, 2020'
     }
@@ -28,12 +27,12 @@ pitch = [
 @login_required
 @main.route("/")
 def index():
-    pitch = Pitch.query.all()
-    return render_template('index.html', pitch=pitch)
+    blog = Blog.query.all()
+    return render_template('index.html', blog=blog)
 
 
-@main.route("/signup", methods=['GET', 'POST'])
-def signup():
+@main.route("/register", methods=['GET', 'POST'])
+def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
@@ -53,7 +52,7 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is None or not user.check_password(form.password.data):
-            flash(f'Not successfull', 'danger')
+            flash(f'Not successful', 'danger')
             return redirect(url_for('main.login'))
         login_user(user)
         flash(f'Login Successful', 'success')
@@ -72,16 +71,16 @@ def logout():
     return redirect(url_for('main.login'))
 
 
-@main.route('/pitch/new', methods=['GET', 'POST'])
-def new_pitch():
-    form = PitchForm()
+@main.route('/blog/new', methods=['GET', 'POST'])
+def new_blog():
+    form = BlogForm()
     if form.validate_on_submit():
-        pitch = Pitch(title=form.title.data, body=form.body.data)
-        db.session.add(pitch)
+        blog = Blog(title=form.title.data, body=form.body.data)
+        db.session.add(blog)
         db.session.commit()
-        flash('Your Pitch has been posted successfully!', 'success')
+        flash('Your blog has been posted successfully!', 'success')
         return redirect(url_for('main.index'))
-    return render_template('pitches.html', title='New Pitch', form=form)
+    return render_template('blog.html', title='New blog', form=form)
 
 
 @main.route("/profile", methods=['GET', 'POST'])
@@ -91,7 +90,7 @@ def profile():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.email = form.email.data
-        db.session.add(pitch)
+        db.session.add(blog)
         db.session.commit()
         flash('Your account has been updated!', 'success')
         return redirect(url_for('main.profile'))
