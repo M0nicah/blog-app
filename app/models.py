@@ -22,7 +22,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password_hash = db.Column(db.String(128))
-    pitch = db.relationship('Pitch', backref='author', lazy=True)
+    blog = db.relationship('Blog', backref='author', lazy=True)
 
     def __repr__(self) -> str:
         return f"User('{self.username}', '{self.email}')"

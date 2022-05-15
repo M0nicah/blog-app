@@ -1,12 +1,12 @@
 from ensurepip import bootstrap
 import logging
-import bcrypt
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import Config
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -19,6 +19,7 @@ def createapp(config_class=Config):
     app = Flask(__name__)
     # Setting up configuration
     app.config.from_object(config_class)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:12345678@localhost:5432/blogapp'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config["SECRET_KEY"] = '885b966eda440980c4db'
 
