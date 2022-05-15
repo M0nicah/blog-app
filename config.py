@@ -8,6 +8,6 @@ class Config():
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace(
         'postgres://', 'postgresql://') or \
-        'sqlite:///' + os.path.join(basedir, 'pitchapp.db')
+        'sqlite:///' + os.path.join(basedir, '.db')
 
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
