@@ -1,10 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %} {% block content %}
 
-</body>
-</html>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ url_for('static', filename='css/index.css') }}"
+/>
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Space+Mono&display=swap");
+
+  .font {
+    font-family: "Space Mono", monospace;
+  }
+  .form-section {
+    background-color: #101935;
+    height: 100vh;
+    width: 100vw;
+  }
+</style>
+{% block blog %}
+
+<div class="card w-50 text-center justify-content-center">
+    <div class="card-body">
+      <h5 class="card-title">Test Blog</h5>
+      <p class="card-text">Test Tester Testing</p>
+      <a href="#" class="btn btn-primary">Votes</a>
+    </div>
+  </div>
+<div>
+  {% for blog in blog %}
+  <div
+    class="card text-center w-75 mx-auto mt-5"
+    style="background-color: #564787; color: #DBCBD8;"
+  >
+    <div class="card-body">
+      <h5 class="card-title fs-3 fw-bolder">{{ blog.title }}</h5>
+      <p class="card-text">📌 {{ blog.body }}</p>
+      <a href="#" class="btn btn-primary">Upvote</a>
+      <div class="card-footer submit-btn">
+        <p>Posted on {{blog.date_posted}}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock blog %} {% endblock %}
