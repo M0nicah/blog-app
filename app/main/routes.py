@@ -68,7 +68,7 @@ def logout():
         Log out user to login page
     '''
     logout_user()
-    return redirect(url_for('main.login'))
+    return redirect(url_for('main.logout'))
 
 
 @main.route('/blog/new', methods=['GET', 'POST'])

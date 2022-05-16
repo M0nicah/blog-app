@@ -1,0 +1,12 @@
+.hero{
+background-color: #576CA8;
+width: 100vw;
+height: 100vh;
+padding: 2rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+.font{
+font-family: 'Playfair Display', serif;
+}
