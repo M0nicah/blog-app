@@ -10,4 +10,5 @@ class Config():
         'postgres://', 'postgresql://') or \
         'sqlite:///' + os.path.join(basedir, 'blogapp.db')
 
+
     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')

@@ -8,6 +8,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 
 
+
 db = SQLAlchemy()
 migrate = Migrate()
 login = LoginManager()

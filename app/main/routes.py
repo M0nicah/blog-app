@@ -1,4 +1,3 @@
-from crypt import methods
 import os
 import secrets
 from flask import render_template, request, url_for, flash, redirect
@@ -84,7 +83,7 @@ def new_blog():
     return render_template('blog.html', title='New blog', form=form)
 
 
-@app.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
+@main.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(id):
 	blog_to_edit = Blog.query.get(id)
