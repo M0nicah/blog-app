@@ -1,67 +1,64 @@
-form{
-    max-width: 48vw;
-    min-height: 500px;
-    margin: 80px auto;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    margin-bottom: 1rem;
-    padding: 40px 30px 30px 30px;
-    background-color: #ecf0f3;
-    border-radius: 15px;
-    box-shadow: 13px 13px 20px #1B264F, -13px -13px 20px #1B264F;
+form {
+  max-width: 48vw;
+  min-height: 500px;
+  margin: 80px auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 40px 30px 30px 30px;
+  background-color: #1b264f;
+  border-radius: 15px;
+  box-shadow: 13px 13px 20px #1b264f, -13px -13px 20px #1b264f;
 }
 
-form, .field-input{
-    width: 100%;
-    display: block;
-    border: none;
-    outline: none;
-    background: none;
-    font-size: 1.2rem;
-    color: #1B264F;
-    padding: 10px 15px 10px 10px;
-
+form,
+.field-input {
+  width: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  color: #1b264f;
+  padding: 10px 15px 10px 10px;
 }
 
 .form-field {
-    padding-left: 10px;
-    margin-bottom: 20px;
-    border-radius: 20px;
-    box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+
+.submit-btn {
+  box-shadow: none;
+  outline: none;
+  margin-top: 1rem;
+  width: 10vw;
+  height: 40px;
+  background-color: #1b264f;
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px #274690, -3px -3px 3px #274690;
+  letter-spacing: 1.3px;
+}
+
+.link {
+  color: #f5f3f5;
+}
+.sign-in-link {
+  color: #f5f3f5;
+  margin: 80px auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-size: 25px;
+}
+
+@media (max-width: 380px) {
+  form {
+    margin: 30px 20px;
+    padding: 40px 15px 15px 15px;
   }
-
-   .submit-btn {
-    box-shadow: none;
-    outline: none;
-    margin-top: 1rem;
-    width: 10vw;
-    height: 40px;
-    background-color: #1B264F;
-    color: #fff;
-    border-radius: 25px;
-    box-shadow: 3px 3px 3px #274690,
-        -3px -3px 3px #274690;
-    letter-spacing: 1.3px;
-}
-
-.link{
-color: #F5F3F5;
-
-}
-.sign-in-link{
-color: #F5F3F5;
-margin: 80px auto;
-justify-content: center;
-align-items: center;
-display: flex;
-font-size: 25px;
-}
-
-
-@media(max-width: 380px) {
-    form {
-        margin: 30px 20px;
-        padding: 40px 15px 15px 15px;
-    }
 }

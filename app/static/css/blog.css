@@ -1,7 +1,51 @@
-
-.hero{
-background-color: #f5f3f5;          /*576CA8*/
-width: 100vw;
-height: 100vh;
-padding: 2rem;
+.hero {
+  background-color: #f5f3f5; /*576CA8*/
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem;
 }
+
+form {
+  max-width: 48vw;
+  min-height: 500px;
+  margin: 80px auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 40px 30px 30px 30px;
+  background-color: #ecf0f3;
+  border-radius: 15px;
+  box-shadow: 13px 13px 20px #1b264f, -13px -13px 20px #1b264f;
+}
+
+.form-field {
+  padding-left: 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+}
+
+form,
+.field-input {
+  width: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  color: #1b264f;
+  padding: 10px 15px 10px 10px;
+}
+.submit-btn {
+    box-shadow: none;
+    outline: none;
+    margin-top: 1rem;
+    width: 10vw;
+    height: 40px;
+    background-color: #1b264f;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 3px 3px 3px #274690, -3px -3px 3px #274690;
+    letter-spacing: 1.3px;
+  }
