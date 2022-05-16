@@ -9,20 +9,14 @@
 </style>
 {% block blog %}
 
-<div class="card hero w-50 text-center justify-content-center">
-    <div class="card-body">
-      <h5 class="card-title">Test Blog</h5>
-      <p class="card-text">Test Tester Testing</p>
-      <a href="#" class="btn btn-primary">Votes</a>
-    </div>
-  </div>
-<div>
+<div class="blog_post">
   {% for blog in blog %}
-  <div
-    class="card text-center w-75 mx-auto mt-5"
-    style="background-color: #564787; color: #DBCBD8;"
-  >
+
+  <div class="card text-center w-75 mx-auto mt-5 ">
     <div class="card-body">
+      <div class="img-pod">
+        <img src="{{ url_for('static', filename='hero.jpg') }}" alt="profile-image">
+      </div>
       <h5 class="card-title fs-3 fw-bolder">{{ blog.title }}</h5>
       <p class="card-text">📌 {{ blog.body }}</p>
       <a href="#" class="btn btn-primary">Upvote</a>

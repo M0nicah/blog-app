@@ -22,7 +22,7 @@
     <div>
       <ul class="nav justify-content-center">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{{ url_for('main.index', filename='index.html') }}">Home</a>
         </li>
         {% if current_user.is_authenticated %}
           <li class="nav-item">
@@ -51,6 +51,7 @@
           {% with messages = get_flashed_messages(with_categories=true) %} {%if
           messages%} {%for category, message in messages %}
           <div class="alert alert-{{ category }}">{{message}}</div>
+          
           {%endfor%} {%endif%} {% endwith %}
         </div>
       </div>
