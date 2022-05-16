@@ -20,7 +20,9 @@
       <h5 class="card-title fs-3 fw-bolder">{{ blog.title }}</h5>
       <p class="card-text">📌 {{ blog.body }}</p>
       <a href="#" class="btn btn-primary">Upvote</a>
+      <a href="{{ url_for('main.edit_post', id=blog.id) }}" class="btn btn-info">Edit</a>
       <a href="{{ url_for('main.delete', id=blog.id) }}" class="btn btn-danger">Delete</a>
+      
       <div class="card-footer submit-btn">
         <p>Posted on {{blog.date_posted}}</p>
       </div>

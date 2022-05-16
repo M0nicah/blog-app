@@ -1,3 +1,4 @@
+from crypt import methods
 import os
 import secrets
 from flask import render_template, request, url_for, flash, redirect
@@ -6,7 +7,7 @@ from ..forms import BlogForm, RegistrationForm, LoginForm, UpdateAccountForm
 from app import db
 from app.main import main
 from app.models import User, Blog
-from flask_login import current_user, login_required, login_user, logout_user
+from flask_login import UserMixin, current_user, login_required, login_user, logout_user
 
 blog = [
     {
@@ -81,6 +82,31 @@ def new_blog():
         flash('Your blog has been posted successfully!', 'success')
         return redirect(url_for('main.index'))
     return render_template('blog.html', title='New blog', form=form)
+
+
+@app.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(id):
+	blog_to_edit = Blog.query.get(id)
+	form = BlogForm()
+	if form.validate_on_submit():
+		blog.title = form.title.data
+		blog.body = form.body.data
+		# Update Database
+		db.session.add(blog_to_edit)
+		db.session.commit()
+		flash("Blog Has Been Updated!", 'info')
+		return redirect(url_for('main.index'))
+	
+	if current_user.email == UserMixin.email or current_user.id == 14:
+		form.title.data = blog.title
+		form.body.data = blog.body
+		return render_template('blog.html', form=form)
+	else:
+		flash("You Aren't Authorized To Edit This Post...")
+		blog = Blog.query.order_by(blog.date_posted)
+		return render_template("index.html", blog=blog)
+
 
 @main.route('/blog/delete/<int:id>')
 @login_required
