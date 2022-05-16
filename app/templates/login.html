@@ -6,42 +6,42 @@
         <fieldset class="form-group form-container justify-center items-center w-96 h-96  p-5 mx-auto">
             <h1 class="font-bold font text-xl text-center ">Welcome Back</h1>
             <legend class="border-bottom mb-4">Log In</legend>
-            <div class="form-group">
+            <div class="form-group field-input">
                 {{ form.email.label(class="form-control-label") }}
                 {% if form.email.errors %}
-                    {{ form.email(class="form-control form-control-md is-invalid") }}
+                    {{ form.email(class="form-control form-control-md is-invalid form-field") }}
                     <div class="invalid-feedback">
                         {% for error in form.email.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.email(class="form-control form-control-md") }}
+                    {{ form.email(class="form-control form-control-md form-field") }}
                 {% endif %}
             </div>
             <div class="form-group">
                 {{ form.password.label(class="form-control-label") }}
                 {% if form.password.errors %}
-                    {{ form.password(class="form-control form-control-md is-invalid") }}
+                    {{ form.password(class="form-control form-control-md is-invalid form-field") }}
                     <div class="invalid-feedback">
                         {% for error in form.password.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.password(class="form-control form-control-md") }}
+                    {{ form.password(class="form-control form-control-md form-field") }}
                 {% endif %}
             </div>
         </fieldset>
         <div class="form-group">
             {{ form.submit_form(class="submit-btn") }}
         </div>
-        <small class="text-muted ml-2 links">
+        <small class="text-muted ml-2 link">
             <a href="#">Forgot Password?</a>
         </small>
     </form>
-    <div class="border-top pt-3 links">
-        <small class="text-muted">
+    <div class="border-top pt-3 link">
+        <small class="sign-in-link">
             Need An Account? <a class="ml-2" href="{{ url_for('main.register') }}">Sign Up Now</a>
         </small>
     </div>
