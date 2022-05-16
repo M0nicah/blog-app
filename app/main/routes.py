@@ -82,6 +82,19 @@ def new_blog():
         return redirect(url_for('main.index'))
     return render_template('blog.html', title='New blog', form=form)
 
+@main.route('/blog/delete/<int:id>')
+@login_required
+def delete(id):
+    blog_to_delete =  Blog.query.get(id)
+    try: 
+        db.session.delete(blog_to_delete)
+        db.session.commit()
+        flash('The blog post has been deleted.', 'info')
+        return redirect(url_for('main.index'))
+    except:
+        flash('Whoops! An error occured. Cannot delete blog', 'danger')
+    return render_template('index.html', title='New blog')
+
 
 @main.route("/profile", methods=['GET', 'POST'])
 @login_required
