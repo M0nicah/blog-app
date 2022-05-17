@@ -1,18 +1,17 @@
 import os
 
-from sqlalchemy import create_engine,exc
-
 class Config:
     '''
     General configuration parent class
     '''
+    DATABASE_URL='postgresql://postgres:12345678@localhost/blogapp'
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    uri = os.environ["DATABASE_URL"]  
-    if uri and uri.startswith("postgres://"):
-        uri = uri.replace("postgres://", "postgresql://", 1)
-    SQLALCHEMY_DATABASE_URI = uri
+    # uri=os.environ["DATABASE_URL"]  
+    # if uri and uri.startswith("postgres://"):
+    #     uri=uri.replace("postgres://", "postgresql://", 1)
+    # SQLALCHEMY_DATABASE_URI=uri
 
 class ProdConfig(Config):
     '''
@@ -21,7 +20,7 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
     
 
 class DevConfig(Config):
@@ -31,7 +30,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL')
 
 config_options = {
 'development':DevConfig,
