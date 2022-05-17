@@ -20,7 +20,7 @@ def createapp(config_class=Config):
     app = Flask(__name__)
     # Setting up configuration
     app.config.from_object(config_class)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:12345678@localhost:5432/blogapp'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:12345678@localhost/blogapp'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config["SECRET_KEY"] = '885b966eda440980c4db'
 
