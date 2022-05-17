@@ -1,4 +1,5 @@
 import os
+import re
 DATABASE_URL = os.environ['DATABASE_URL']
 
 basedir = os.path.abspath(os.path.dirname(__file__))
