@@ -1,5 +1,4 @@
 import os
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 from sqlalchemy import create_engine,exc
@@ -19,10 +18,10 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    # SQLALCHEMY_DATABASE_URI = create_engine(os.environ.get("DATABASE_URL").replace("://", "ql://", 1), pool_recycle=3600)
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace(
-        'postgresql://') or \
-       'sqlite:///' + os.path.join(basedir, 'blogapp.db')
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
+if uri and uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+
     
 
 class DevConfig(Config):
