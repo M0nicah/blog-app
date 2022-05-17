@@ -1,19 +1,5 @@
-# import os
-
-# basedir = os.path.abspath(os.path.dirname(__file__))
-
-
-# class Config(object):
-#     SECRET_KEY = os.environ.get('SECRET_KEY')
-#     SQLALCHEMY_TRACK_MODIFICATIONS = False
-#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace(
-#         'postgresql://', 'postgres://') or \
-#         'sqlite:///' + os.path.join(basedir, 'blogapp.db')
-
-
-#     LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
-
 import os
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 from sqlalchemy import create_engine,exc
@@ -35,7 +21,7 @@ class ProdConfig(Config):
     '''
     # SQLALCHEMY_DATABASE_URI = create_engine(os.environ.get("DATABASE_URL").replace("://", "ql://", 1), pool_recycle=3600)
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', '').replace(
-        'postgresql://', 'postgres://') or \
+        'postgresql://') or \
        'sqlite:///' + os.path.join(basedir, 'blogapp.db')
     
 
