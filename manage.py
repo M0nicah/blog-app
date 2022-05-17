@@ -1,18 +1,12 @@
 from app import createapp, db
 from app.models import User, Blog
-from config import Config
+from flask_migrate import Migrate
 
 # Creating app instance
-app = createapp(Config)
+app = createapp('development')
+app = createapp('production')
 
-
-# @app.test_request_context()
-def test():
-    """Run the unit tests"""
-    import unittest
-    tests = unittest.TestLoader().discover('tests')
-    unittest.TextTestRunner(verbosity=2).run(tests)
-
+migrate = Migrate()
 
 @app.shell_context_processor
 def make_shell_context():
