@@ -14,7 +14,7 @@ def createapp(config_name):
     app = Flask(__name__)
     # Creating the app configurations
     app.config.from_object(config_options[config_name])
-
+    app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql://postgres:12345678@localhost/blogapp"
     # Initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
