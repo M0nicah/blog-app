@@ -6,7 +6,7 @@ from flask_migrate import Migrate
 app = createapp('development')
 app = createapp('production')
 
-migrate = Migrate()
+migrate = Migrate(app, db)
 
 @app.shell_context_processor
 def make_shell_context():
