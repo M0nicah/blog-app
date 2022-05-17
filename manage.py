@@ -1,8 +1,9 @@
 from app import createapp, db
 from app.models import User, Blog
+from config import Config
 
 # Creating app instance
-app = createapp()
+app = createapp(Config)
 
 
 # @app.test_request_context()

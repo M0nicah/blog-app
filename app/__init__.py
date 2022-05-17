@@ -8,8 +8,8 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 
 
-
 db = SQLAlchemy()
+
 migrate = Migrate()
 login = LoginManager()
 login.login_view = 'main.login'
@@ -20,7 +20,7 @@ def createapp(config_class=Config):
     app = Flask(__name__)
     # Setting up configuration
     app.config.from_object(config_class)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://smhnlzawyswsou:f9f02fb0abe68b32afdfeabac823d2fbfc249e464a9cd85c225177b871caefd5@ec2-3-229-252-6.compute-1.amazonaws.com:5432/ddp651snc9mj3g'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://postgres:12345678@localhost:5432/blogapp'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config["SECRET_KEY"] = '885b966eda440980c4db'
 
@@ -34,12 +34,12 @@ def createapp(config_class=Config):
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
-    if not app.debug and not app.testing:
-        # heroku logs to stdout
-        if app.config['LOG_TO_STDOUT']:
-            stream_handler = logging.StreamHandler()
-            stream_handler.setLevel(logging.INFO)
-            app.logger.addHandler(stream_handler)
-            # End of Heroku stdout logs
+    # if not app.debug and not app.testing:
+    #     # heroku logs to stdout
+    #     if app.config['LOG_TO_STDOUT']:
+    #         stream_handler = logging.StreamHandler()
+    #         stream_handler.setLevel(logging.INFO)
+    #         app.logger.addHandler(stream_handler)
+    #         # End of Heroku stdout logs
 
     return app
