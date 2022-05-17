@@ -1,4 +1,6 @@
 import os
+DATABASE_URL = os.environ['DATABASE_URL']
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 from sqlalchemy import create_engine,exc
