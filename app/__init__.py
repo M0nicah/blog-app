@@ -1,3 +1,4 @@
+import logging
 from flask import Flask
 from flask_bootstrap import Bootstrap
 from config import Config
@@ -28,5 +29,13 @@ def create_app(config_class=Config):
     # Registering the blueprint
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
+
+    if not app.debug and not app.testing:
+        # ...
+
+        if app.config['LOG_TO_STDOUT']:
+            stream_handler = logging.StreamHandler()
+            stream_handler.setLevel(logging.INFO)
+            app.logger.addHandler(stream_handler)
 
     return app
