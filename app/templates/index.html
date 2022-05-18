@@ -15,12 +15,12 @@
 <div>
   <div class="quote-wrapper card">
     <div class="quote">
-      <h4 class="quote-title text-center">Inspirational Quote</h1>
-      <h4>{{quote.author}}</h1>
+      <h4 class="quote-title text-center">Inspirational Quote</h4>
       <h6>
         <blockquote><cite> "{{quote.quote}}" </cite></blockquote>
       </h6>
-      <a class="quote-btn" href="{{url_for('main.index')}}"><button>New Quote</button></a>
+      <h4 class="author">{{quote.author}}</h4>
+      <a class="quote-btn" href="{{url_for('main.index')}}">New Quote</a>
     </div>
   </div>
 </div>

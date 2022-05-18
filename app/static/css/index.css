@@ -32,14 +32,14 @@ img {
 }
 
 .quote-wrapper {
-  max-width: 48vw;
-  min-height: 500px;
+  max-width: 60vw;
+  min-height: 300px;
   margin: 80px auto;
   justify-content: center;
   align-items: center;
   display: flex;
-  margin-bottom: 1rem;
-  padding: 40px 30px 30px 30px;
+  margin-bottom: 5rem;
+  padding: 20px 10px 10px 10px;
   background-color: #f5f3f5;
   border-radius: 15px;
   box-shadow: 13px 13px 20px #576ca8, -13px -13px 20px #576ca8;
@@ -49,13 +49,24 @@ img {
 }
 
 .quote-btn{
-  background-color: #274690;
-  padding: 1rem;
+  margin-top: 1rem;
+  width: 20vw;
+  height: 40px;
+  background-color: #1b264f;
   color: #f5f3f5;
   justify-content: center;
   align-items: center;
   display: flex;
   margin: auto;
-  outline: none;
+  border-radius: 25px;
+  letter-spacing: 1.3px;
 
+}
+.author{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: auto;
+  color: #1b264f;
+  padding: 1rem;
 }

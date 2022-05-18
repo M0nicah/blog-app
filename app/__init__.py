@@ -1,23 +1,28 @@
 from flask import Flask
 from flask_bootstrap import Bootstrap
-from config import config_options
+from config import Config
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 from flask_login import LoginManager
 
-
+db = SQLAlchemy()
+migrate = Migrate()
 login_manager = LoginManager()
 login_manager.login_view = 'main.login'
 bootstrap = Bootstrap()
-db = SQLAlchemy()
 
-def createapp(config_name):
+
+def create_app(config_class=Config):
     app = Flask(__name__)
     # Creating the app configurations
-    app.config.from_object(config_options[config_name])
-    app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql://postgres:12345678@localhost/blogapp"
+    app.config.from_object(config_class)
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config["SECRET_KEY"] = '885b966eda440980c4db'
+    
     # Initializing flask extensions
     bootstrap.init_app(app)
     db.init_app(app)
+    migrate.init_app(app, db)
     login_manager.init_app(app)
 
     # Registering the blueprint

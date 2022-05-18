@@ -119,7 +119,7 @@ def delete(id):
 #         db.session.add(User)
 #         db.session.commit()
 #         flash('Your account has been updated!', 'success')
-#         return redirect(url_for('main.profile'))
+#         return redirect(url_for('main.index'))
 #     elif request.method == 'GET':
 #         form.username.data = current_user.username
 #         form.email.data = current_user.email

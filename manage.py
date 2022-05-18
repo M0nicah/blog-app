@@ -1,12 +1,9 @@
-from app import createapp, db
+from app import create_app, db
 from app.models import User, Blog
-from flask_migrate import Migrate
 
 # Creating app instance
-app = createapp('development')
-app = createapp('production')
+app = create_app()
 
-migrate = Migrate(app, db)
 
 @app.shell_context_processor
 def make_shell_context():
