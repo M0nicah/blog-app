@@ -5,24 +5,48 @@
   type="text/css"
   href="{{ url_for('static', filename='css/index.css') }}"
 />
-<style>
-</style>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+  crossorigin="anonymous"
+/>
+
+<div>
+  <div class="quote-wrapper card">
+    <div class="quote">
+      <h4 class="quote-title text-center">Inspirational Quote</h1>
+      <h4>{{quote.author}}</h1>
+      <h6>
+        <blockquote><cite> "{{quote.quote}}" </cite></blockquote>
+      </h6>
+      <a class="quote-btn" href="{{url_for('main.index')}}"><button>New Quote</button></a>
+    </div>
+  </div>
+</div>
 {% block blog %}
 
 <div class="blog_post">
   {% for blog in blog %}
 
-  <div class="card text-center w-75 mx-auto mt-5 ">
+  <div class="card text-center w-75 mx-auto mt-5">
     <div class="card-body">
       <div class="img-pod">
-        <img src="{{ url_for('static', filename='hero.jpg') }}" alt="profile-image">
+        <img
+          src="{{ url_for('static', filename='hero.jpg') }}"
+          alt="profile-image"
+        />
       </div>
       <h5 class="card-title fs-3 fw-bolder">{{ blog.title }}</h5>
       <p class="card-text">📌 {{ blog.body }}</p>
       <a href="#" class="btn btn-primary">Upvote</a>
-      <a href="{{ url_for('main.edit_post', id=blog.id) }}" class="btn btn-info">Edit</a>
-      <a href="{{ url_for('main.delete', id=blog.id) }}" class="btn btn-danger">Delete</a>
-      
+      <a href="{{ url_for('main.edit_post', id=blog.id) }}" class="btn btn-info"
+        >Edit</a
+      >
+      <a href="{{ url_for('main.delete', id=blog.id) }}" class="btn btn-danger"
+        >Delete</a
+      >
+
       <div class="card-footer submit-btn">
         <p>Posted on {{blog.date_posted}}</p>
       </div>

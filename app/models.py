@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 from . import db
 from flask_login import UserMixin
 from app import login_manager
@@ -28,6 +29,7 @@ class User(UserMixin, db.Model):
         return f"User('{self.username}', '{self.email}')"
 
 
+
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
@@ -39,3 +41,7 @@ class Blog(db.Model):
         return f"Body('{self.title}', '{self.date_posted}', '{self.body}')"
 
 
+class Quote():
+    def __init__(self,author,quote):
+        self.author = author
+        self.quote = quote

@@ -2,33 +2,19 @@ import os
 import secrets
 from flask import render_template, request, url_for, flash, redirect
 import app
+from app.requests import process_quote
 from ..forms import BlogForm, RegistrationForm, LoginForm, UpdateAccountForm
 from app import db
 from app.main import main
 from app.models import User, Blog
 from flask_login import UserMixin, current_user, login_required, login_user, logout_user
 
-blog = [
-    {
-        'author': 'Test User',
-        'title': 'Test blog',
-        'body': 'Test Tester Testing',
-        'date_posted': 'May 6, 2020'
-    },
-    {
-        'author': 'John User',
-        'title': 'Johns blog',
-        'body': 'John Tester Testing',
-        'date_posted': 'May 2, 2020'
-    }
-]
-
-
 @login_required
 @main.route("/")
 def index():
     blog = Blog.query.all()
-    return render_template('index.html', blog=blog)
+    quote = process_quote()
+    return render_template('index.html', blog=blog, quote=quote)
 
 
 @main.route("/register", methods=['GET', 'POST'])
@@ -42,6 +28,8 @@ def register():
         flash(f'Account successfully created for {form.username.data}', 'success')
         return redirect(url_for('main.login'))
     return render_template('register.html', title='Register', form=form)
+
+
 
 
 @main.route("/login", methods=['GET', 'POST'])
@@ -121,18 +109,18 @@ def delete(id):
     return render_template('index.html', title='New blog')
 
 
-@main.route("/profile", methods=['GET', 'POST'])
-@login_required
-def profile():
-    form = UpdateAccountForm()
-    if form.validate_on_submit():
-        current_user.username = form.username.data
-        current_user.email = form.email.data
-        db.session.add(blog)
-        db.session.commit()
-        flash('Your account has been updated!', 'success')
-        return redirect(url_for('main.profile'))
-    elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.email.data = current_user.email
-    return render_template('user.html', title='Profile', form=form)
+# @main.route("/profile", methods=['GET', 'POST'])
+# @login_required
+# def profile():
+#     form = UpdateAccountForm()
+#     if form.validate_on_submit():
+#         current_user.username = form.username.data
+#         current_user.email = form.email.data
+#         db.session.add(User)
+#         db.session.commit()
+#         flash('Your account has been updated!', 'success')
+#         return redirect(url_for('main.profile'))
+#     elif request.method == 'GET':
+#         form.username.data = current_user.username
+#         form.email.data = current_user.email
+#     return render_template('user.html', title='Profile', form=form)

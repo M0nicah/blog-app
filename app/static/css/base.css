@@ -14,7 +14,6 @@ font-family: 'Playfair Display', serif;
 .nav-item{
     transition: all .5s ease;
     color: #fff;
-    /* border: 3px solid white; */
     font-family:'Montserrat', sans-serif;
     text-transform: uppercase;
     text-align: center;
