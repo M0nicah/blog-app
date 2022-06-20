@@ -42,7 +42,7 @@ mkvirtualenv virtual
 ```
 ## Features and BDD
 
-- Users are able to create user profile and login to post their .
+- Users are able to create user profile and login to post their blogs.
 
 ## Technology Used
 
